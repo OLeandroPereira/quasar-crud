@@ -1,12 +1,12 @@
 <template>
   <q-page padding>
-  </q-page>
-     <q-table
+    <q-table
       title="Treats"
       :rows="posts"
       :columns="columns"
       row-key="name"
     />
+  </q-page>
 </template>
 
 <script>
@@ -29,8 +29,8 @@ export default defineComponent({
 
     const getPosts = async () => {
       try {
-        const response = await api.get('http://localhost:3000/posts')
-        console.log(response)
+        const { data } = await api.get('posts')
+        posts.value = data
       } catch (error) {
         console.error(error)
       }
